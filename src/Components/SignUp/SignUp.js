@@ -271,7 +271,7 @@ class SignUp extends Component {
                         </button>
                     </div>
                     <div>
-                        <span style={{ color: "black" }}>Already have an account <Link to="/" style={{ color: "black", textDecoration: "underline", fontWeight: "bold" }}>Sign In here</Link></span>
+                        <span style={{ color: "black" }}>Already have an account? <Link to="/" style={{ color: "black", textDecoration: "underline", fontWeight: "bold" }}>Sign In here</Link></span>
                     </div>
                 </div>
                 <div style={{ textAlign: "center" }}>
