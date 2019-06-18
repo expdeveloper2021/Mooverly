@@ -12,6 +12,12 @@ class Dashboard extends Component {
             lng: 67.0566961
         }
     }
+
+    done() {
+        console.log(this.state.lat , this.state.lng)
+        // this.props.history.push("/DashRestaurant")
+    }
+
     render() {
         const MyMapComponent = withScriptjs(withGoogleMap((props) =>
             <GoogleMap
@@ -46,7 +52,7 @@ class Dashboard extends Component {
                     </div>
                 </nav>
 
-                <h3>Please tell your location to saw nearby restaurants</h3>
+                <h3 style={{color: "black"}}>Please tell us your location to saw nearby restaurants</h3>
                 <MyMapComponent
                     isMarkerShown
                     googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
@@ -55,7 +61,7 @@ class Dashboard extends Component {
                     mapElement={<div style={{ height: `100%` }} />}
                 />
 
-            <button style={{padding: "10px" , width: "auto" , float: "right" , margin: "10px" , border: "1px solid black" , borderRadius: "3px"}}>Done</button>
+            <button style={{padding: "10px" , width: "auto" , float: "right" , margin: "10px" , border: "1px solid black" , borderRadius: "3px"}} onClick={this.done.bind(this)}>Done</button>
 
             </>
         )
