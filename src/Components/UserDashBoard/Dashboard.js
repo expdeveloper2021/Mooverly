@@ -2,20 +2,39 @@ import React, { Component } from 'react'
 import { Link } from "react-router-dom"
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
 import './Dashboard.css'
-
+import firebase from '../../Config/Fire'
 
 class Dashboard extends Component {
     constructor() {
         super()
         this.state = {
-            lat: 24.9449814,
-            lng: 67.0566961
+            lat: '',
+            lng: ''
         }
     }
 
+    componentDidMount() {
+        navigator.geolocation.getCurrentPosition((location) => {
+            this.setState({
+                lat: location.coords.latitude,
+                lng: location.coords.longitude,
+            })
+        });
+        let uid = localStorage.getItem("uid")
+        this.setState({ uid })
+    }
+
     done() {
-        console.log(this.state.lat , this.state.lng)
-        // this.props.history.push("/DashRestaurant")
+        let lat = this.state.lat
+        let lng = this.state.lng
+        let userObj = {
+            lat,
+            lng
+        }
+        firebase.database().ref("users/" + this.state.uid + "/location").set(userObj)
+        .then(()=>{
+            this.props.history.push("/resta")
+        })
     }
 
     render() {
@@ -25,7 +44,7 @@ class Dashboard extends Component {
                 defaultCenter={{ lat: this.state.lat, lng: this.state.lng }}
             >
                 {props.isMarkerShown &&
-                    <Marker position={{ lat: this.state.lat, lng: this.state.lng }} draggable={true} onDragEnd={ (e) => this.setState({lat: e.latLng.lat() , lng: e.latLng.lng()}) } />}
+                    <Marker position={{ lat: this.state.lat, lng: this.state.lng }} draggable={true} onDragEnd={(e) => this.setState({ lat: e.latLng.lat(), lng: e.latLng.lng() })} />}
             </GoogleMap>
         ))
         return (
@@ -52,7 +71,7 @@ class Dashboard extends Component {
                     </div>
                 </nav>
 
-                <h3 style={{color: "black"}}>Please tell us your location to saw nearby restaurants</h3>
+                <h3 style={{ color: "black" }}>Please tell us your location to saw nearby restaurants</h3>
                 <MyMapComponent
                     isMarkerShown
                     googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
@@ -61,7 +80,7 @@ class Dashboard extends Component {
                     mapElement={<div style={{ height: `100%` }} />}
                 />
 
-            <button style={{padding: "10px" , width: "auto" , float: "right" , margin: "10px" , border: "1px solid black" , borderRadius: "3px"}} onClick={this.done.bind(this)}>Done</button>
+                <button style={{ padding: "10px", width: "auto", float: "right", margin: "10px", border: "1px solid black", borderRadius: "3px" }} onClick={this.done.bind(this)}>Done</button>
 
             </>
         )

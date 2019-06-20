@@ -47,6 +47,7 @@ class SignIn extends Component {
             firebase.auth().signInWithEmailAndPassword(email, password)
                 .then((succ) => {
                     this.setState({ show: false })
+                    localStorage.setItem("uid" , succ.user.uid)
                     if (succ.user.emailVerified === false) {
                         swal({
                             title: "Oops",

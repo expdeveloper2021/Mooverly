@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
-class Restaurants extends Component {
+class Pending extends Component {
     render() {
         return (
             <div>
-                <h1>Maps done</h1>
+                <h3 style={{color: "black"}}>Happy ending</h3>
             </div>
         )
     }
 }
 
-export default Restaurants
+export default Pending

@@ -140,12 +140,14 @@ class SignUp extends Component {
                     firebase.auth().createUserWithEmailAndPassword(email, password)
                         .then((succ) => {
                             var user = firebase.auth().currentUser;
+                            let uid = succ.user.uid
                             let userObj = {
                                 name,
                                 email,
                                 resName,
                                 country,
                                 city,
+                                uid,
                                 type: 'restaurant'
                             }
                             user.sendEmailVerification()
