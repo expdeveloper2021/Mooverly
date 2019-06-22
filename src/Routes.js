@@ -6,6 +6,7 @@ import DashboardRes from './Components/DashboardRestaurant/Dashboard'
 import DashboardUser from './Components/UserDashBoard/Dashboard'
 import Pending from './Components/DashboardRestaurant/Pending'
 import Restaurants from './Components/UserDashBoard/Restaurants'
+import DeepRestaurant from './Components/UserDetail/DeepRestaurant'
 
 
 const CreateBrowserHistory = require("history").createBrowserHistory
@@ -21,6 +22,7 @@ class Routers extends Component {
                 <Route path="/User" component={DashboardUser} />
                 <Route path="/pending" component={Pending} />
                 <Route path="/resta" component={Restaurants} />
+                <Route path="/deep" component={DeepRestaurant} />
             </Router>
         )
     }
