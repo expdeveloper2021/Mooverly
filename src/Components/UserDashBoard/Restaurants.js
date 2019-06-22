@@ -69,7 +69,7 @@ class Restaurants extends Component {
                     </div>
                 </nav>
 
-                <div style={{ width: "100%" }}>
+                <div style={{ width: "100%" , textAlign: "center"}}>
                     <h2 style={{ color: "black", textAlign: "center" }}>All Restaurants</h2>
                     {this.state.infoAll.map((elem) => {
                         return <div className="card" key={Math.random(36)}>

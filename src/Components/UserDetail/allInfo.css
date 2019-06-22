@@ -1,8 +1,45 @@
+
 .infos {
-    width: 60%;
+    width: 80%;
     margin: 10px auto;
+    text-align: center;
+}
+
+.purpose {
+    position: relative;
 }
 
 .infos h4 {
     color: black;
+}
+
+.bottom-left {
+    position: absolute;
+    bottom: 180px;
+    left: 16px;
+}
+
+.card {
+    width: 25%;
+    display: inline-block;
+    margin-right: 2.5%;
+    margin-left: 2.5%;
+    margin-top: 20px;
+    border: 1px solid rgb(85, 82, 82);
+    padding: 10px;
+    border-radius: 4px;
+}
+
+@media only screen and (max-width: 1000px) {
+    .card {
+        width: 45%;
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .card {
+        width: 80%;
+        text-align: center;
+    }
 }

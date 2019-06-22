@@ -7,7 +7,7 @@ import DashboardUser from './Components/UserDashBoard/Dashboard'
 import Pending from './Components/DashboardRestaurant/Pending'
 import Restaurants from './Components/UserDashBoard/Restaurants'
 import DeepRestaurant from './Components/UserDetail/DeepRestaurant'
-
+import Requests from './Components/UserDashBoard/Requests';
 
 const CreateBrowserHistory = require("history").createBrowserHistory
 const history = CreateBrowserHistory()
@@ -23,6 +23,7 @@ class Routers extends Component {
                 <Route path="/pending" component={Pending} />
                 <Route path="/resta" component={Restaurants} />
                 <Route path="/deep" component={DeepRestaurant} />
+                <Route path="/Requests" component={Requests} />
             </Router>
         )
     }
