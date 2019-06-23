@@ -1,7 +1,13 @@
 body {
     margin: 0px;
     padding: 0px;
-    background-color: cornflowerblue;
+}
+
+.autos {
+    width: 50%;
+    margin: 0px auto;
+    padding: 10px;
+    margin-left: 25%;
 }
 
 .lds-facebook {
@@ -43,5 +49,12 @@ body {
     50%, 100% {
         top: 19px;
         height: 26px;
+    }
+}
+
+@media only screen and (max-width: 1000px) {    
+    .autos {
+        width: 80%;
+        margin-left: 15%;
     }
 }

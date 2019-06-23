@@ -4,10 +4,10 @@ import SignUp from './Components/SignUp/SignUp'
 import SignIn from './Components/SignIn/SignIn'
 import DashboardRes from './Components/DashboardRestaurant/Dashboard'
 import DashboardUser from './Components/UserDashBoard/Dashboard'
-import Pending from './Components/DashboardRestaurant/Pending'
 import Restaurants from './Components/UserDashBoard/Restaurants'
 import DeepRestaurant from './Components/UserDetail/DeepRestaurant'
 import Requests from './Components/UserDashBoard/Requests';
+import Pending from './Components/DashboardRestaurant/Pending'
 
 const CreateBrowserHistory = require("history").createBrowserHistory
 const history = CreateBrowserHistory()
@@ -20,10 +20,10 @@ class Routers extends Component {
                 <Route path="/signUp" component={SignUp} />
                 <Route path="/Restaurant" component={DashboardRes} />
                 <Route path="/User" component={DashboardUser} />
-                <Route path="/pending" component={Pending} />
                 <Route path="/resta" component={Restaurants} />
                 <Route path="/deep" component={DeepRestaurant} />
                 <Route path="/Requests" component={Requests} />
+                <Route path="/pending" component={Pending} />
             </Router>
         )
     }

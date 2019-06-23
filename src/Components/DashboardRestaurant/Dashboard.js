@@ -56,7 +56,7 @@ class Dashboard extends Component {
         this.check.map((elem) => console.log(elem))
         firebase.database().ref("users/" + this.state.uid + "/location").set(userObjLocate)
         firebase.database().ref("users/" + this.state.uid + "/main").set(this.check.map((elem) => { return elem }))
-        .then(() => {this.props.history.push("/pending")})
+            .then(() => { this.props.history.push("/pending") })
     }
 
     render() {

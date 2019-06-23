@@ -9,26 +9,65 @@ class Requests extends Component {
         super()
         this.state = {
             fullData: [],
+            filtered: [],
+            show: "none"
         }
     }
 
     componentDidMount() {
         let uid = localStorage.getItem("uid")
-        firebase.database().ref("users/" + uid + "/myRequests").on("value", (data) => {
-            this.setState({ fullData: [data.val()] })
+        firebase.database().ref("users/" + uid + "/myRequests").on("child_added", (data) => {
+            let fullData = this.state.fullData
+            let arr = []
+            arr.push(data.val())
+            fullData.push(arr)
+            this.setState({ fullData })
         })
     }
 
     pending() {
+        this.setState({ show: "inline" })
         console.log("pending")
+        setTimeout(() => {
+            let filtered = this.state.fullData.filter((e) => {
+                return e[0].status === "pending"
+            })
+            console.log(filtered)
+            if (filtered === []) {
+                let filtered = "No pending deliveries"
+            }
+            this.setState({ filtered, show: "none" })
+        }, 2000);
     }
 
     approve() {
         console.log("approve")
+        this.setState({ show: "inline" , filtered: [] })
+        setTimeout(() => {
+            let filtered = this.state.fullData.filter((e) => {
+                return e[0].status === "approved"
+            })
+            console.log(filtered)
+            if (filtered === []) {
+                let filtered = "No approved deliveries"
+            }
+            this.setState({ filtered, show: "none" })
+        }, 2000);
     }
 
     deliver() {
         console.log("delivered")
+        this.setState({ show: "inline" , filtered: [] })
+        setTimeout(() => {
+            let filtered = this.state.fullData.filter((e) => {
+                return e[0].status === "delivered"
+            })
+            console.log(filtered)
+            if (filtered === []) {
+                let filtered = "No delivered deliveries"
+            }
+            this.setState({ filtered, show: "none" })
+        }, 2000);
     }
 
     render() {
@@ -67,23 +106,25 @@ class Requests extends Component {
                 </div>
 
                 <div className="allInfo">
-                    <table className="table table-striped" style={{ marginTop: "20px", width: "70%", margin: "0px auto" }}>
+                    <table className="table table-striped std" style={{ marginTop: "20px", margin: "0px auto" }}>
                         <thead>
                             <tr>
-                                <td>Restaurant</td>
                                 <td>Item Name</td>
                                 <td>Price</td>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Mateen Food</td>
-                                <td>95$</td>
-                                <td>Tikka</td>
-                            </tr>
+                            {this.state.filtered.length ? this.state.filtered.map((e) => {
+                                return <tr key={Math.random(36)}>
+                                    <td>{e[0].item}</td>
+                                    <td>{e[0].price}</td>
+                                </tr>
+                            }): <h3>No posts here</h3> }
                         </tbody>
                     </table>
                 </div>
+
+                <div className="lds-ring" style={{ display: this.state.show }}><div></div><div></div><div></div><div></div></div>
             </div>
         )
     }

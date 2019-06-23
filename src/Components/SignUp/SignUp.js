@@ -198,7 +198,7 @@ class SignUp extends Component {
 
     render() {
         return (
-            <div>
+            <div className="main">
                 <h1 style={{ color: "black" }}>Mooverly</h1>
                 <hr />
                 <h2 style={{ textAlign: "center", color: "black" }}>Sign Up</h2>
@@ -206,7 +206,7 @@ class SignUp extends Component {
                     <label className="checkbox-inline" style={{ fontSize: "15px" }}><input type="checkbox" checked={this.state.isChecked1} onChange={this.checked.bind(this)} value="user" />User</label>
                     <label className="checkbox-inline" style={{ fontSize: "15px" }}><input type="checkbox" checked={this.state.isChecked2} onChange={this.checked.bind(this)} value="restaurant" />Restaurant</label>
                 </div>
-                <div style={{ width: "90%", margin: "0px auto", padding: "10px", marginLeft: "10%" }}>
+                <div className="autos">
                     <div>
                         <label style={{ color: "black" }}>{this.state.inp}</label>
                         <br />

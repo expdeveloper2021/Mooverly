@@ -78,7 +78,7 @@ class DeepRestaurant extends Component {
 
 
                 {this.state.allInfo.length !== 0 &&
-                    <div className="purpose" style={{ width: "80%", margin: "0px auto", height: "auto", border: "1px solid gray", padding: "10px" }}>
+                    <div className="purpose" style={{ width: "80%", margin: "0px auto", height: "auto", padding: "10px" }}>
                         <img src={this.state.allInfo.photoURL} width="100%" alt="Restaurant Pic" height="350px" style={{ backgroundRepeat: "no-repeat", backgroundSize: "contain", opacity: "0.8", borderRadius: "40px" }} />
                         <div className="infos">
                             <h3>Food Categories</h3>
@@ -90,7 +90,7 @@ class DeepRestaurant extends Component {
                                         <h4 className="card-title" style={{ color: "black" }}>{elem}</h4>
                                         <span>Price: {price}$</span>
                                         <br />
-                                        <button className="btn btn-primary" style={{ float: "right", marginTop: "15px" }} onClick={this.order.bind(this, elem, price)}>Order</button>
+                                        <button className="btn btn-primary" style={{ float: "right", marginTop: "10px" }} onClick={this.order.bind(this, elem, price)}>Order</button>
                                     </div>
                                 </div>
                             })}
