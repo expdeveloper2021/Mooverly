@@ -47,7 +47,7 @@ class SignIn extends Component {
             firebase.auth().signInWithEmailAndPassword(email, password)
                 .then((succ) => {
                     this.setState({ show: false })
-                    localStorage.setItem("uid" , succ.user.uid)
+                    localStorage.setItem("uid", succ.user.uid)
                     if (succ.user.emailVerified === false) {
                         swal({
                             title: "Oops",
@@ -86,11 +86,26 @@ class SignIn extends Component {
 
     render() {
         return (
-            <div>
-                <h1 style={{ color: "black" }}>Mooverly</h1>
-                <hr />
+            <div className="main">
+                <nav className="navbar navbar-inverse">
+                    <div className="container-fluid">
+                        <div className="navbar-header">
+                            <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                <span className="icon-bar"></span>
+                                <span className="icon-bar"></span>
+                                <span className="icon-bar"></span>
+                            </button>
+                            <a className="navbar-brand" href="_">Mooverly</a>
+                        </div>
+                        <div className="collapse navbar-collapse" id="myNavbar">
+                            <ul className="nav navbar-nav navbar-right">
+                                <li><a href="_"><span className="glyphicon glyphicon-log-in"></span>  Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
                 <h2 style={{ textAlign: "center", color: "black" }}>Sign In</h2>
-                <div style={{ width: "90%", margin: "0px auto", padding: "10px" }}>
+                <div className="autos">
                     <div>
                         <label style={{ color: "black" }}>Email:</label>
                         <br />

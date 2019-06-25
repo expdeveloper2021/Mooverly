@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import firebase from '../../Config/Fire'
 import './allInfo.css'
 import allTimes from '../../Images/allTimes.jpg'
-import { swal } from 'sweetalert'
 
 class DeepRestaurant extends Component {
 
@@ -27,26 +26,26 @@ class DeepRestaurant extends Component {
     order(e, p) {
         let resId = this.state.allInfo.uid
         let myId = firebase.auth().currentUser.uid
+        let pushRestaurant = firebase.database().ref("users/" + resId + "/allRequests").push().key
+        let pushUser = firebase.database().ref("users/" + myId + "/myRequests").push().key
         let userObj = {
             item: e,
-            price: p,
+            price: p + "$",
             uid: myId,
             status: "pending",
+            pushRestaurant,
+            pushUser,
         }
+        firebase.database().ref("users/" + resId + "/allRequests/" + pushRestaurant).set(userObj)
         let userObj1 = {
             item: e,
             price: p + "$",
             uid: resId,
             status: "pending",
+            pushRestaurant,
+            pushUser,
         }
-        firebase.database().ref("users/" + resId + "/allRequests").push(userObj)
-        firebase.database().ref("users/" + myId + "/myRequests").push(userObj1).then(() => {
-            swal({
-                title: "Done",
-                text: "Order Placed Successfully",
-                icon: 'success'
-            })
-        })
+        firebase.database().ref("users/" + myId + "/myRequests/" + pushUser).set(userObj1)
     }
 
     render() {
@@ -79,7 +78,7 @@ class DeepRestaurant extends Component {
 
                 {this.state.allInfo.length !== 0 &&
                     <div className="purpose" style={{ width: "80%", margin: "0px auto", height: "auto", padding: "10px" }}>
-                        <img src={this.state.allInfo.photoURL} width="100%" alt="Restaurant Pic" height="350px" style={{ backgroundRepeat: "no-repeat", backgroundSize: "contain", opacity: "0.8", borderRadius: "40px" }} />
+                        <img src={this.state.allInfo.photoURL} width="100%" alt="Restaurant Pic" className="img2" style={{ backgroundRepeat: "no-repeat", backgroundSize: "contain", opacity: "0.8", borderRadius: "40px" }} />
                         <div className="infos">
                             <h3>Food Categories</h3>
                             {this.state.arrCateg.map((elem) => {

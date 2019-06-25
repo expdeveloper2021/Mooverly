@@ -61,7 +61,7 @@ class Dashboard extends Component {
                         </div>
                         <div className="collapse navbar-collapse" id="myNavbar">
                             <ul className="nav navbar-nav">
-                                <li><Link to="/Restaurants">Restaurants</Link></li>
+                                <li><Link to="/resta">Restaurants</Link></li>
                                 <li><Link to="/Requests">My Requests</Link></li>
                             </ul>
                             <ul className="nav navbar-nav navbar-right">

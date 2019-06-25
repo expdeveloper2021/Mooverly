@@ -33,9 +33,6 @@ class Requests extends Component {
                 return e[0].status === "pending"
             })
             console.log(filtered)
-            if (filtered === []) {
-                let filtered = "No pending deliveries"
-            }
             this.setState({ filtered, show: "none" })
         }, 2000);
     }
@@ -48,9 +45,6 @@ class Requests extends Component {
                 return e[0].status === "approved"
             })
             console.log(filtered)
-            if (filtered === []) {
-                let filtered = "No approved deliveries"
-            }
             this.setState({ filtered, show: "none" })
         }, 2000);
     }
@@ -63,9 +57,6 @@ class Requests extends Component {
                 return e[0].status === "delivered"
             })
             console.log(filtered)
-            if (filtered === []) {
-                let filtered = "No delivered deliveries"
-            }
             this.setState({ filtered, show: "none" })
         }, 2000);
     }
@@ -123,8 +114,10 @@ class Requests extends Component {
                         </tbody>
                     </table>
                 </div>
+                <div style={{width: "50%" , textAlign: "center" , marginLeft: "50%"}}>
+                    <div className="lds-ring" style={{ display: this.state.show }}><div></div><div></div><div></div><div></div></div>
+                </div>
 
-                <div className="lds-ring" style={{ display: this.state.show }}><div></div><div></div><div></div><div></div></div>
             </div>
         )
     }

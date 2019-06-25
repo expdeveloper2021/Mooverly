@@ -3,6 +3,15 @@ body {
     padding: 0px;
 }
 
+.main nav {
+    background-color: teal;
+    border: 1px solid teal
+}
+
+.main nav div div a {
+    color: black !important;
+}
+
 .autos {
     width: 50%;
     margin: 0px auto;
@@ -56,5 +65,12 @@ body {
     .autos {
         width: 80%;
         margin-left: 15%;
+    }
+}
+
+@media only screen and (max-width: 400px) {    
+    .autos {
+        width: 90% !important;
+        margin-left: 10% !important;
     }
 }

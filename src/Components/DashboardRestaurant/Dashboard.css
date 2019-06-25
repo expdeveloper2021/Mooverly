@@ -5,3 +5,9 @@ body {
 .checkbox {
     margin-top: "10px";
 }
+
+.stylish:hover {
+    background-color: gray;
+    transition: 0.9s;
+    transform: rotate(0.5deg);
+}

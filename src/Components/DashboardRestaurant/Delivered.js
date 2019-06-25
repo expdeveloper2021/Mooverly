@@ -4,7 +4,7 @@ import firebase from '../../Config/Fire'
 import './Dashboard.css'
 
 
-class Pending extends Component {
+class Delivered extends Component {
 
     constructor() {
         super()
@@ -20,27 +20,22 @@ class Pending extends Component {
 
     get() {
         let uid = localStorage.getItem("uid")
+        this.setState({ filtered: [] })
         firebase.database().ref("users/" + uid + "/allRequests").on("child_added", (data) => {
             let fullData = this.state.fullData
             let arr = []
             arr.push(data.val())
             fullData.push(arr)
-            this.setState({ fullData })
+            this.setState({ fullData, filtered: [] })
             setTimeout(() => {
                 let filtered = this.state.fullData.filter((e) => {
-                    return e[0].status === "pending"
+                    return e[0].status === "delivered"
                 })
                 this.setState({ filtered })
-            }, 2000)
+            }, 2000);
         })
     }
 
-    approve(e, rest, user) {
-        let userUid = e
-        let myUid = firebase.auth().currentUser.uid
-        firebase.database().ref("users/" + myUid + "/allRequests/" + rest).update({ status: "approved" })
-        firebase.database().ref("users/" + userUid + "/myRequests/" + user).update({ status: "approved" })
-    }
 
     render() {
         return (
@@ -57,9 +52,9 @@ class Pending extends Component {
                         </div>
                         <div className="collapse navbar-collapse" id="myNavbar">
                             <ul className="nav navbar-nav">
-                                <li className="active"><Link to="/Pending">Pending</Link></li>
+                                <li><Link to="/Pending">Pending</Link></li>
                                 <li><Link to="/Approved">Approved</Link></li>
-                                <li><Link to="/Delivered">Delivered</Link></li>
+                                <li className="active"><Link to="/Delivered">Delivered</Link></li>
                             </ul>
                             <ul className="nav navbar-nav navbar-right">
                                 <li><a href="_"><span className="glyphicon glyphicon-log-in"></span>  Logout</a></li>
@@ -73,17 +68,15 @@ class Pending extends Component {
                             <tr>
                                 <td>Item Name</td>
                                 <td>Price</td>
-                                <td>Action</td>
                             </tr>
                         </thead>
                         <tbody>
-                            {this.state.filtered.length > 0 ? this.state.filtered.map((e) => {
+                            {this.state.filtered.length > 0 && this.state.filtered.map((e) => {
                                 return <tr key={Math.random(36)} className="stylish">
                                     <td>{e[0].item}</td>
                                     <td>{e[0].price}</td>
-                                    <td><button className="btn btn-default" onClick={this.approve.bind(this, e[0].uid, e[0].pushRestaurant, e[0].pushUser)}>Approve</button></td>
                                 </tr>
-                            }): <tr><td>Searching....</td></tr>}
+                            })}
                         </tbody>
                     </table>
                 </div>
@@ -92,4 +85,4 @@ class Pending extends Component {
     }
 }
 
-export default Pending
+export default Delivered

@@ -199,8 +199,24 @@ class SignUp extends Component {
     render() {
         return (
             <div className="main">
-                <h1 style={{ color: "black" }}>Mooverly</h1>
-                <hr />
+                <nav className="navbar navbar-inverse">
+                    <div className="container-fluid">
+                        <div className="navbar-header">
+                            <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                <span className="icon-bar"></span>
+                                <span className="icon-bar"></span>
+                                <span className="icon-bar"></span>
+                            </button>
+                            <a className="navbar-brand" href="_">Mooverly</a>
+                        </div>
+                        <div className="collapse navbar-collapse" id="myNavbar">
+                            <ul className="nav navbar-nav navbar-right">
+                                <li><a href="_"><span className="glyphicon glyphicon-log-in"></span>  Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
                 <h2 style={{ textAlign: "center", color: "black" }}>Sign Up</h2>
                 <div style={{ width: "90%", margin: "0px auto", padding: "10px", textAlign: "center" }}>
                     <label className="checkbox-inline" style={{ fontSize: "15px" }}><input type="checkbox" checked={this.state.isChecked1} onChange={this.checked.bind(this)} value="user" />User</label>
