@@ -148,7 +148,9 @@ class SignUp extends Component {
                                 country,
                                 city,
                                 uid,
-                                type: 'restaurant'
+                                type: 'restaurant',
+                                stars: 0,
+                                categories: '',
                             }
                             user.sendEmailVerification()
                                 .then((success) => {
@@ -211,7 +213,7 @@ class SignUp extends Component {
                         </div>
                         <div className="collapse navbar-collapse" id="myNavbar">
                             <ul className="nav navbar-nav navbar-right">
-                                <li><a href="_"><span className="glyphicon glyphicon-log-in"></span>  Logout</a></li>
+                                <li><a href="javascript:void(0)"><span className="glyphicon glyphicon-log-in"></span>  Logout</a></li>
                             </ul>
                         </div>
                     </div>

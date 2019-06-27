@@ -17,7 +17,7 @@ class Approved extends Component {
     componentDidMount() {
         this.get()
     }
-    
+
     get() {
         let uid = localStorage.getItem("uid")
         firebase.database().ref("users/" + uid + "/allRequests").on("child_added", (data) => {
@@ -25,7 +25,7 @@ class Approved extends Component {
             let arr = []
             arr.push(data.val())
             fullData.push(arr)
-            this.setState({ fullData, filtered: [] })
+            this.setState({ fullData })
             setTimeout(() => {
                 let filtered = this.state.fullData.filter((e) => {
                     return e[0].status === "approved"
@@ -34,12 +34,15 @@ class Approved extends Component {
             }, 2000);
         })
     }
-    
+
     approve(e, rest, user) {
         let userUid = e
         let myUid = firebase.auth().currentUser.uid
         firebase.database().ref("users/" + myUid + "/allRequests/" + rest).update({ status: "delivered" })
-        firebase.database().ref("users/" + userUid + "/myRequests/" + user).update({ status: "delivered" })
+        firebase.database().ref("users/" + userUid + "/myRequests/" + user).update({ status: "delivered" }).then(() => {
+            this.setState({ fullData: [], filtered: [] })
+            this.get()
+        })
     }
 
     render() {
@@ -60,9 +63,10 @@ class Approved extends Component {
                                 <li><Link to="/Pending">Pending</Link></li>
                                 <li className="active"><Link to="/Approved">Approved</Link></li>
                                 <li><Link to="/Delivered">Delivered</Link></li>
+                                <li><Link to="/chatRestaurant">My Chats</Link></li>
                             </ul>
                             <ul className="nav navbar-nav navbar-right">
-                                <li><a href="_"><span className="glyphicon glyphicon-log-in"></span>  Logout</a></li>
+                                <li><a href="javascript:void(0)"><span className="glyphicon glyphicon-log-in"></span>  Logout</a></li>
                             </ul>
                         </div>
                     </div>

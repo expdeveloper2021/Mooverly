@@ -26,7 +26,7 @@ class Delivered extends Component {
             let arr = []
             arr.push(data.val())
             fullData.push(arr)
-            this.setState({ fullData, filtered: [] })
+            this.setState({ fullData })
             setTimeout(() => {
                 let filtered = this.state.fullData.filter((e) => {
                     return e[0].status === "delivered"
@@ -55,9 +55,10 @@ class Delivered extends Component {
                                 <li><Link to="/Pending">Pending</Link></li>
                                 <li><Link to="/Approved">Approved</Link></li>
                                 <li className="active"><Link to="/Delivered">Delivered</Link></li>
+                                <li><Link to="/chatRestaurant">My Chats</Link></li>
                             </ul>
                             <ul className="nav navbar-nav navbar-right">
-                                <li><a href="_"><span className="glyphicon glyphicon-log-in"></span>  Logout</a></li>
+                                <li><a href="javascript:void(0)"><span className="glyphicon glyphicon-log-in"></span>  Logout</a></li>
                             </ul>
                         </div>
                     </div>
@@ -71,12 +72,12 @@ class Delivered extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            {this.state.filtered.length > 0 && this.state.filtered.map((e) => {
+                            {this.state.filtered.length > 0 ? this.state.filtered.map((e) => {
                                 return <tr key={Math.random(36)} className="stylish">
                                     <td>{e[0].item}</td>
                                     <td>{e[0].price}</td>
                                 </tr>
-                            })}
+                            }) : <tr><td>Searching...</td></tr>}
                         </tbody>
                     </table>
                 </div>

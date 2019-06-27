@@ -10,6 +10,8 @@ import Requests from './Components/UserDashBoard/Requests';
 import Pending from './Components/DashboardRestaurant/Pending'
 import Approved from './Components/DashboardRestaurant/Approved'
 import Delivered from './Components/DashboardRestaurant/Delivered';
+import Chat from './Components/Chat/Chat';
+import ChatRestaurant from './Components/DashboardRestaurant/ChatRestaurant';
 
 const CreateBrowserHistory = require("history").createBrowserHistory
 const history = CreateBrowserHistory()
@@ -28,6 +30,8 @@ class Routers extends Component {
                 <Route path="/Pending" component={Pending} />
                 <Route path="/Approved" component={Approved} />
                 <Route path="/Delivered" component={Delivered} />
+                <Route path='/chat' component={Chat} />
+                <Route path="/chatRestaurant" component={ChatRestaurant} />
             </Router>
         )
     }

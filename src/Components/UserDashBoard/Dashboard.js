@@ -65,7 +65,7 @@ class Dashboard extends Component {
                                 <li><Link to="/Requests">My Requests</Link></li>
                             </ul>
                             <ul className="nav navbar-nav navbar-right">
-                                <li><a href="_"><span className="glyphicon glyphicon-log-in"></span> Login</a></li>
+                                <li><a href="javascript:void(0)"><span className="glyphicon glyphicon-log-in"></span> Login</a></li>
                             </ul>
                         </div>
                     </div>

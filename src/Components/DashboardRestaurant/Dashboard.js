@@ -26,6 +26,7 @@ class Dashboard extends Component {
             },
         }
         this.check = []
+        this.categories = []
     }
 
     componentDidMount() {
@@ -54,6 +55,7 @@ class Dashboard extends Component {
             lng
         }
         this.check.map((elem) => console.log(elem))
+        firebase.database().ref("users/" + this.state.uid + "/info").update({categories: this.categories})
         firebase.database().ref("users/" + this.state.uid + "/location").set(userObjLocate)
         firebase.database().ref("users/" + this.state.uid + "/main").set(this.check.map((elem) => { return elem }))
             .then(() => { this.props.history.push("/pending") })
@@ -89,9 +91,10 @@ class Dashboard extends Component {
                                 <li><Link to="/Pending">Pending</Link></li>
                                 <li><Link to="/Approved">Approved</Link></li>
                                 <li><Link to="/Delivered">Delivered</Link></li>
+                                <li><Link to="/chatRestaurant">My Chats</Link></li>
                             </ul>
                             <ul className="nav navbar-nav navbar-right">
-                                <li><a href="_"><span className="glyphicon glyphicon-log-in"></span> Login</a></li>
+                                <li><a href="javascript:void(0)"><span className="glyphicon glyphicon-log-in"></span> Login</a></li>
                             </ul>
                         </div>
                     </div>
@@ -107,6 +110,15 @@ class Dashboard extends Component {
                     containerElement={<div style={{ height: `400px`, marginTop: "30px" }} />}
                     mapElement={<div style={{ height: `100%` }} />}
                 />
+
+                <h3 style={{ color: "black", marginTop: "20px" }}>Food Categories</h3>
+                <div style={{ marginRight: "5px" }}>
+                    <label className="checkbox-inline" style={this.state.stylish} onChange={(e) => this.categories = [...this.categories, e.target.value]}><input type="checkbox" value="BBQ" />BBQ</label>
+                    <label className="checkbox-inline" style={this.state.stylish} onChange={(e) => this.categories = [...this.categories, e.target.value]}><input type="checkbox" value="Fast Food" />Fast Food</label>
+                    <label className="checkbox-inline" style={this.state.stylish} onChange={(e) => this.categories = [...this.categories, e.target.value]}><input type="checkbox" value="Chinese" />Chinese</label>
+                    <label className="checkbox-inline" style={this.state.stylish} onChange={(e) => this.categories = [...this.categories, e.target.value]}><input type="checkbox" value="Japanese" />Japanese</label>
+                    <label className="checkbox-inline" style={this.state.stylish} onChange={(e) => this.categories = [...this.categories, e.target.value]}><input type="checkbox" value="Indian" />Inidan</label>
+                </div>
 
                 <h3 style={{ color: "black", marginTop: "20px" }}>Main Dishes of Your Restaurant</h3>
                 <div style={{ marginRight: "5px" }}>

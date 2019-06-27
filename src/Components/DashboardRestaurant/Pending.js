@@ -10,7 +10,7 @@ class Pending extends Component {
         super()
         this.state = {
             fullData: [],
-            filtered: []
+            filtered: [],
         }
     }
 
@@ -39,7 +39,10 @@ class Pending extends Component {
         let userUid = e
         let myUid = firebase.auth().currentUser.uid
         firebase.database().ref("users/" + myUid + "/allRequests/" + rest).update({ status: "approved" })
-        firebase.database().ref("users/" + userUid + "/myRequests/" + user).update({ status: "approved" })
+        firebase.database().ref("users/" + userUid + "/myRequests/" + user).update({ status: "approved" }).then(() => {
+            this.setState({ fullData: [], filtered: [] })
+            this.get()
+        })
     }
 
     render() {
@@ -60,9 +63,10 @@ class Pending extends Component {
                                 <li className="active"><Link to="/Pending">Pending</Link></li>
                                 <li><Link to="/Approved">Approved</Link></li>
                                 <li><Link to="/Delivered">Delivered</Link></li>
+                                <li><Link to="/chatRestaurant">My Chats</Link></li>
                             </ul>
                             <ul className="nav navbar-nav navbar-right">
-                                <li><a href="_"><span className="glyphicon glyphicon-log-in"></span>  Logout</a></li>
+                                <li><a href="javascript:void(0)"><span className="glyphicon glyphicon-log-in"></span>  Logout</a></li>
                             </ul>
                         </div>
                     </div>
@@ -83,7 +87,7 @@ class Pending extends Component {
                                     <td>{e[0].price}</td>
                                     <td><button className="btn btn-default" onClick={this.approve.bind(this, e[0].uid, e[0].pushRestaurant, e[0].pushUser)}>Approve</button></td>
                                 </tr>
-                            }): <tr><td>Searching....</td></tr>}
+                            }) : <tr><td>Searching....</td></tr>}
                         </tbody>
                     </table>
                 </div>
