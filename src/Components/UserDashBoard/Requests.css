@@ -1,12 +1,12 @@
 .tabs {
     width: 100%;
     height: 40px;
-    background-color: blue;
+    background-color: gray;
 }
 
 .tabs div {
     width: 10%;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: inline-block;
     height: 40px;
     padding: 3px;
@@ -15,10 +15,11 @@
 
 .tabs div span {
     font-size: 20px;
+    color: white;
 }
 
 .tabs :hover {
-    background-color: aqua;
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 .allInfo {
@@ -29,6 +30,40 @@
 
 .std {
     width: 70%;
+}
+
+.card {
+    width: 20%;
+    display: inline-block;
+    margin-right: 2.5%;
+    margin-left: 2.5%;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+@media only screen and (max-width: 1000px) {
+    .card {
+        width: 45%;
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .card {
+        width: 80%;
+        text-align: center;
+    }
+    .img2 {
+        height: 250px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .img2 {
+        height: 200px !important;
+    }
 }
 
 @media only screen and (max-width: 330px) {

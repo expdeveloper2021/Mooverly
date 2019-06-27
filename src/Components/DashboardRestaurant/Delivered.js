@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import firebase from '../../Config/Fire'
 import './Dashboard.css'
-
+import biryani from '../../Images/biryani.jpg'
 
 class Delivered extends Component {
 
@@ -63,24 +63,20 @@ class Delivered extends Component {
                         </div>
                     </div>
                 </nav>
-                <div className="allInfo">
-                    <table className="table table-striped std" style={{ marginTop: "20px", margin: "0px auto" }}>
-                        <thead>
-                            <tr>
-                                <td>Item Name</td>
-                                <td>Price</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {this.state.filtered.length > 0 ? this.state.filtered.map((e) => {
-                                return <tr key={Math.random(36)} className="stylish">
-                                    <td>{e[0].item}</td>
-                                    <td>{e[0].price}</td>
-                                </tr>
-                            }) : <tr><td>Searching...</td></tr>}
-                        </tbody>
-                    </table>
-                </div>
+
+                <h3 style={{ color: "black", textAlign: "center" }}>Delivered</h3>
+                {this.state.fullData.length ? this.state.filtered.length ? <div className="infos">
+                    <h3 style={{ marginLeft: '15%', color: 'black' }}>{this.state.txt}</h3>
+                    {this.state.filtered.map((elem) => {
+                        return <div className="card" key={Math.random(36)}>
+                            <img className="card-img-top" src={biryani} alt="Card" style={{ width: "100%", height: "150px", borderRadius: "4px" }} />
+                            <div className="card-body">
+                                <h4 className="card-title" style={{ color: "black" }}>{elem[0].item}</h4>
+                                <span>{elem[0].price}</span>
+                            </div>
+                        </div>
+                    })}
+                </div> : <h5>No Data Here</h5> : <h5>Searching...</h5>}
             </div>
         )
     }

@@ -25,7 +25,6 @@ class ChatRestaurant extends Component {
                 namesArr: []
             })
             let daat = Object.entries(data.val())
-            console.log(daat)
             for (let i = 0; i < daat.length; i++) {
                 let namesArr = this.state.namesArr
                 if (daat[i][1].info.type === "user") {
@@ -33,7 +32,6 @@ class ChatRestaurant extends Component {
                     this.setState({
                         namesArr
                     })
-                    console.log(this.state.namesArr)
                 }
             }
         })
@@ -44,7 +42,7 @@ class ChatRestaurant extends Component {
             senderId: uid,
             allMsgs: []
         })
-        firebase.database().ref("chatRooms/" + firebase.auth().currentUser.uid + "/" + uid).on("value", (data) => {
+        firebase.database().ref("chatRooms/" + localStorage.getItem("resUid") + "/" + this.state.senderId).on("value", (data) => {
             let msgs = []
             if (data.val() !== null) {
                 let a = Object.entries(data.val())
@@ -82,7 +80,7 @@ class ChatRestaurant extends Component {
                                 <span className="icon-bar"></span>
                                 <span className="icon-bar"></span>
                             </button>
-                            <a className="navbar-brand" href="_">Mooverly</a>
+                            <a className="navbar-brand" href="javascript:void(0)">Mooverly</a>
                         </div>
                         <div className="collapse navbar-collapse" id="myNavbar">
                             <ul className="nav navbar-nav">

@@ -39,7 +39,7 @@ class DeepRestaurant extends Component {
         }
         let userObj1 = {
             item: e,
-            price:"999 Rs",
+            price: "999 Rs",
             uid: resId,
             status: "pending",
             pushRestaurant,
@@ -89,12 +89,11 @@ class DeepRestaurant extends Component {
                         <div className="infos">
                             <h3>Food Categories</h3>
                             {this.state.arrCateg.map((elem) => {
-                                const price = Math.floor(Math.random(1) * 50)
                                 return <div className="card" key={Math.random(36)}>
                                     <img className="card-img-top" src={allTimes} alt="Card" style={{ width: "100%", height: "150px", borderRadius: "4px" }} />
                                     <div className="card-body">
                                         <h4 className="card-title" style={{ color: "black" }}>{elem}</h4>
-                                        <span>Price: 999$</span>
+                                        <span>Price: 999 Rs</span>
                                         <br />
                                         <button className="btn btn-primary" style={{ float: "right", marginTop: "10px" }} onClick={this.order.bind(this, elem)}>Order</button>
                                     </div>
@@ -102,7 +101,7 @@ class DeepRestaurant extends Component {
                             })}
                         </div>
                         <div style={{ width: "80%", margin: "10px auto", textAlign: "center" }} >
-                            <button className="btn btn-default" onClick={() => this.props.history.push("/chat")}>Chat Restaurant</button>
+                            <button className="btn btn-primary" onClick={() => this.props.history.push("/chat")}>Chat Restaurant</button>
                         </div>
                     </div>
                 }

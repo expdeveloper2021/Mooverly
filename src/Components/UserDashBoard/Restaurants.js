@@ -109,7 +109,7 @@ class Restaurants extends Component {
                                         return <span style={{ marginRight: "5px" }}> {e} , </span>
                                     })}
                                 </div>
-                                <button className="btn btn-default" style={{ float: "right", marginTop: "30px" }} onClick={this.detail.bind(this, elem[0].uid)}>Detail</button>
+                                <button className="btn btn-primary" style={{ float: "right", marginTop: "30px" }} onClick={this.detail.bind(this, elem[0].uid)}>Detail</button>
                             </div>
                         </div>
                     }) : this.state.filters.length ? this.state.filters.map((elem) => {
@@ -124,7 +124,7 @@ class Restaurants extends Component {
                                         return <span style={{ marginRight: "5px" }}> {e} , </span>
                                     })}
                                 </div>
-                                <button className="btn btn-default" style={{ float: "right", marginTop: "30px" }} onClick={this.detail.bind(this, elem[0].uid)}>Detail</button>
+                                <button className="btn btn-primary" style={{ float: "right", marginTop: "30px" }} onClick={this.detail.bind(this, elem[0].uid)}>Detail</button>
                             </div>
                         </div>
                     }) : this.state.infoAll.map((elem) => {
@@ -139,7 +139,7 @@ class Restaurants extends Component {
                                         return <span style={{ marginRight: "5px" }}> {e} , </span>
                                     })}
                                 </div>
-                                <button className="btn btn-default" style={{ float: "right" }} onClick={this.detail.bind(this, elem[0].uid)}>Detail</button>
+                                <button className="btn btn-primary" style={{ float: "right" }} onClick={this.detail.bind(this, elem[0].uid)}>Detail</button>
                             </div>
                         </div>
                     })}

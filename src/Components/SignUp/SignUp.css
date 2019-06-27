@@ -3,15 +3,6 @@ body {
     padding: 0px;
 }
 
-.main nav {
-    background-color: teal;
-    border: 1px solid teal
-}
-
-.main nav div div a {
-    color: black !important;
-}
-
 .autos {
     width: 50%;
     margin: 0px auto;
@@ -31,7 +22,7 @@ body {
     position: absolute;
     left: 6px;
     width: 13px;
-    background: #fff;
+    background: #fdd;
     animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
 }
 
